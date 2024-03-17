@@ -177,7 +177,7 @@ class Client(Logger):
 
     async def wait_for_receiving(
             self, chain_id: int, old_balance: int = 0, token_name: str = None, sleep_time: int = 60,
-            check_balance_on_dst: bool = False, token_address: str = None, omnicheck:bool = False
+            check_balance_on_dst: bool = False, token_address: str = None,
     ) -> bool:
         client = await self.new_client(chain_id)
         if not token_name:
@@ -231,8 +231,8 @@ class Client(Logger):
                 await client.session.close()
 
     async def get_token_balance(
-            self, token_name: str = None, check_symbol: bool = True,
-            check_native: bool = False, token_address: str = None
+            self, token_name: str = None, check_symbol: bool = True, check_native: bool = False,
+            token_address: str = None
     ) -> [float, int, str]:
         if not token_name:
             token_name = self.token
@@ -256,7 +256,7 @@ class Client(Logger):
         amount_in_wei = await self.w3.eth.get_balance(self.address)
         return amount_in_wei, amount_in_wei / 10 ** 18, self.network.token
 
-    async def get_auto_amount(self, token_name_search: str = None, class_name: str = None) -> [str, float, int]:
+    async def get_auto_amount(self, token_name_search: str = None) -> [str, float, int]:
 
         token_per_chain = TOKENS_PER_CHAIN[self.network.name]
 

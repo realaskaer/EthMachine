@@ -269,12 +269,8 @@ class OKX(CEX, Logger):
 
                     ccy = f"{ccy}.e" if network in [29, 30] else ccy
 
-                    omnicheck = False
-                    if ccy in ['USDV', 'STG']:
-                        omnicheck = True
-
                     old_balance_on_dst = await self.client.wait_for_receiving(
-                        dst_chain_id, token_name=ccy, omnicheck=omnicheck, check_balance_on_dst=True
+                        dst_chain_id, token_name=ccy, check_balance_on_dst=True
                     )
 
                     await self.make_request(
@@ -286,7 +282,7 @@ class OKX(CEX, Logger):
                     )
 
                     await self.client.wait_for_receiving(
-                        dst_chain_id, old_balance_on_dst, omnicheck=omnicheck, token_name=ccy
+                        dst_chain_id, old_balance_on_dst, token_name=ccy
                     )
 
                     return True

@@ -9,7 +9,7 @@ from hashlib import sha256
 from general_settings import BITGET_API_PASSPHRAS
 from modules import CEX, Logger
 from modules.interfaces import SoftwareExceptionWithoutRetry, SoftwareException, InsufficientBalanceException
-from utils.tools import helper, get_wallet_for_deposit
+from utils.tools import get_wallet_for_deposit
 from config import CEX_WRAPPED_ID, TOKENS_PER_CHAIN, BITGET_NETWORKS_NAME
 
 
@@ -256,12 +256,8 @@ class Bitget(CEX, Logger):
 
                         ccy = f"{ccy}.e" if network_id in [29, 30] else ccy
 
-                        omnicheck = False
-                        if ccy in ['USDV', 'STG']:
-                            omnicheck = True
-
                         old_balance_on_dst = await self.client.wait_for_receiving(
-                            dst_chain_id, token_name=ccy, omnicheck=omnicheck, check_balance_on_dst=True
+                            dst_chain_id, token_name=ccy, check_balance_on_dst=True
                         )
 
                         url = f"{self.api_url}{path}"
@@ -274,7 +270,7 @@ class Bitget(CEX, Logger):
                                         type_msg='success')
 
                         await self.client.wait_for_receiving(
-                            dst_chain_id, old_balance_on_dst, omnicheck=omnicheck, token_name=ccy
+                            dst_chain_id, old_balance_on_dst, token_name=ccy
                         )
 
                         return True
