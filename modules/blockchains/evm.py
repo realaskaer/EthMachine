@@ -38,7 +38,8 @@ class SimpleEVM(Logger):
     @gas_checker
     async def transfer_eth_to_myself(self):
 
-        amount, amount_in_wei = await self.client.get_smart_amount(TRANSFER_AMOUNT)
+        amount = await self.client.get_smart_amount(TRANSFER_AMOUNT)
+        amount_in_wei = self.client.to_wei(amount)
 
         self.logger_msg(*self.client.acc_info, msg=f"Transfer {amount} ETH to your own address: {self.client.address}")
 
@@ -53,7 +54,8 @@ class SimpleEVM(Logger):
     @gas_checker
     async def transfer_eth(self):
 
-        amount, amount_in_wei = await self.client.get_smart_amount(TRANSFER_AMOUNT)
+        amount = await self.client.get_smart_amount(TRANSFER_AMOUNT)
+        amount_in_wei = self.client.to_wei(amount)
 
         if amount > 0.0001:
             raise SoftwareExceptionWithoutRetry(
@@ -81,7 +83,8 @@ class SimpleEVM(Logger):
     async def wrap_eth(self, amount_in_wei: int = None):
 
         if not amount_in_wei:
-            amount, amount_in_wei = await self.client.get_smart_amount(WRAP_AMOUNT)
+            amount = await self.client.get_smart_amount(WRAP_AMOUNT)
+            amount_in_wei = self.client.to_wei(amount)
         else:
             amount = round(amount_in_wei / 10 ** 18, 5)
 
@@ -199,7 +202,8 @@ class Scroll(Blockchain, SimpleEVM):
     @gas_checker
     async def withdraw(self):
 
-        amount, amount_in_wei = await self.client.get_smart_amount(NATIVE_WITHDRAW_AMOUNT)
+        amount = await self.client.get_smart_amount(NATIVE_WITHDRAW_AMOUNT)
+        amount_in_wei = self.client.to_wei(amount)
 
         self.logger_msg(*self.client.acc_info, msg=f'Withdraw {amount} ETH Scroll -> ERC20')
 
@@ -325,7 +329,8 @@ class Base(Blockchain, SimpleEVM):
     @gas_checker
     async def withdraw(self):
 
-        amount, amount_in_wei = await self.client.get_smart_amount(NATIVE_WITHDRAW_AMOUNT)
+        amount = await self.client.get_smart_amount(NATIVE_WITHDRAW_AMOUNT)
+        amount_in_wei = self.client.to_wei(amount)
 
         self.logger_msg(*self.client.acc_info, msg=f'Withdraw on Base Bridge: {amount} ETH Base -> ERC20')
 
@@ -389,7 +394,8 @@ class Linea(Blockchain, SimpleEVM):
     @gas_checker
     async def withdraw(self):
 
-        amount, amount_in_wei = await self.client.get_smart_amount(NATIVE_WITHDRAW_AMOUNT)
+        amount = await self.client.get_smart_amount(NATIVE_WITHDRAW_AMOUNT)
+        amount_in_wei = self.client.to_wei(amount)
 
         self.logger_msg(*self.client.acc_info, msg=f'Withdraw {amount} ETH Linea -> ERC20')
 
@@ -475,8 +481,10 @@ class Zora(Blockchain, SimpleEVM):
     @helper
     @gas_checker
     async def bridge(self):
+
         amount = await self.client.get_smart_amount(NATIVE_DEPOSIT_AMOUNT)
         amount_in_wei = self.client.to_wei(amount)
+
         chain_to_name = CHAIN_NAME[random.choice(NATIVE_CHAIN_ID_TO)]
         contract_address, tx_data, value = await self.get_bridge_info(amount_in_wei, chain_to_name)
 
