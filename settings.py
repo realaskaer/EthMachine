@@ -271,7 +271,8 @@ MINTFUN_CONTRACTS = [
     bridge_relay                     # смотри BRIDGE CONTROL
     bridge_relay2                    # смотри BRIDGE CONTROL. Модуль для возможности второго бриджа через Relay
     bridge_rhino                     # смотри BRIDGE CONTROL
-    bridge_native                    # смотри BRIDGE CONTROL (кол-во из NATIVE_DEPOSIT_AMOUNT) 
+    bridge_native                    # смотри BRIDGE CONTROL (кол-во из NATIVE_DEPOSIT_AMOUNT)
+    withdraw_txsync                  # вывод через txSync (кол-во из NATIVE_WITHDRAW_AMOUNT)
     
     okx_deposit                      # ввод средств на биржу + сбор средств на субАккаунтов на основной счет
     bingx_deposit                    # ввод средств на биржу + сбор средств на субАккаунтов на основной счет
@@ -311,6 +312,6 @@ MINTFUN_CONTRACTS = [
 
 CLASSIC_ROUTES_MODULES_USING = [
     ['okx_withdraw'],
-    ['bridge_relay'],
-    ['random_approve', 'transfer_eth_to_myself', 'transfer_eth', 'bridge_relay2', 'wrap_eth', 'refuel_bungee'],
+    ['bridge_layerswap', 'bridge_native'],
+    ['swap_mute', 'swap_izumi', 'mint_domain_ens', None],
 ]

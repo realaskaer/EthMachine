@@ -30,6 +30,7 @@ AVAILABLE_MODULES_INFO = {
     bridge_nitro                        : (bridge_nitro, 1, 'Nitro bridge', 0, [2, 3, 11, 12]),
     bridge_native                       : (bridge_native, 1, 'Native bridge', 0, [2, 3, 4, 8, 9, 11, 12]),
     bridge_zora                         : (bridge_zora, 1, 'Zora instant bridge', 0, [2, 3, 4, 8, 9, 11, 12]),
+    withdraw_txsync                     : (withdraw_txsync, 1, 'Withdraw txSync', 0, [2, 3, 4, 8, 9, 11, 12]),
     swap_izumi                          : (swap_izumi, 2, 'iZumi swap', 1, [3, 4, 8, 11]),
     swap_odos                           : (swap_odos, 2, 'ODOS swap', 1, [3, 11]),
     swap_oneinch                        : (swap_oneinch, 2, '1inch swap', 1, [3, 11]),

@@ -244,6 +244,14 @@ async def refuel_bungee(account_name, private_key, _, proxy):
     return await worker.refuel()
 
 
+async def withdraw_txsync(account_name, private_key, _, proxy):
+    blockchain = get_interface_by_chain_id(11)
+    network = get_network_by_chain_id(11)
+
+    worker = blockchain(get_client(account_name, private_key, network, proxy))
+    return await worker.withdraw()
+
+
 async def swap_uniswap(account_name, private_key, network, proxy, **kwargs):
     worker = Uniswap(get_client(account_name, private_key, network, proxy))
     return await worker.swap(**kwargs)
@@ -251,7 +259,7 @@ async def swap_uniswap(account_name, private_key, network, proxy, **kwargs):
 
 async def mint_mintfun(account_name, private_key, network, proxy):
     worker = MintFun(get_client(account_name, private_key, network, proxy))
-    return await worker.mint_mintfun()
+    return await worker.mint()
 
 
 async def random_approve(account_nameaccount_name, private_key, network, proxy):
