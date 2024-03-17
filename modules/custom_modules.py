@@ -97,10 +97,7 @@ class Custom(Logger, RequestClient):
                 if native_check:
                     tokens = [client.token for client in clients]
 
-                balances = [await client.get_token_balance(
-                    omnicheck=omni_check if token not in ['USDV', 'STG'] else True, token_name=token,
-                )
-                            for client, token in zip(clients, tokens)]
+                balances = [await client.get_token_balance(token_name=token) for client, token in zip(clients, tokens)]
 
                 if all(balance_in_wei == 0 for balance_in_wei, _, _ in balances):
                     raise SoftwareException('Insufficient balances in all networks!')
@@ -232,18 +229,14 @@ class Custom(Logger, RequestClient):
                     balance_in_usd, token_price = balance_data
                     dep_token = dapp_tokens[chain_index]
 
-                    omnicheck = False
-                    if dep_token in ['USDV', 'STG']:
-                        omnicheck = True
-
                     dep_network = networks if isinstance(networks, int) else networks[chain_index]
                     limit_amount, wanted_to_hold_amount = CEX_DEPOSIT_LIMITER
                     min_wanted_amount, max_wanted_amount = min(wanted_to_hold_amount), max(wanted_to_hold_amount)
 
                     if balance_in_usd >= limit_amount:
 
-                        dep_amount = await client.get_smart_amount(amount, token_name=dep_token, omnicheck=omnicheck)
-                        deposit_fee = await client.simulate_transfer(token_name=dep_token, omnicheck=omnicheck)
+                        dep_amount = await client.get_smart_amount(amount, token_name=dep_token)
+                        deposit_fee = await client.simulate_transfer(token_name=dep_token)
                         min_hold_balance = random.uniform(min_wanted_amount, max_wanted_amount) / token_price
 
                         if dep_token == client.token:
