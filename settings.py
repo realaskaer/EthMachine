@@ -268,6 +268,7 @@ MINTFUN_CONTRACTS = [
     bridge_nitro                     # смотри BRIDGE CONTROL
     bridge_owlto                     # смотри BRIDGE CONTROL
     bridge_orbiter                   # смотри BRIDGE CONTROL
+    bridge_zora                      # смотри BRIDGE CONTROL. см. NATIVE_CHAIN_ID_FROM, NATIVE_DEPOSIT_AMOUNT
     bridge_relay                     # смотри BRIDGE CONTROL
     bridge_relay2                    # смотри BRIDGE CONTROL. Модуль для возможности второго бриджа через Relay
     bridge_rhino                     # смотри BRIDGE CONTROL
