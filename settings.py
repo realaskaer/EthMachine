@@ -313,6 +313,6 @@ MINTFUN_CONTRACTS = [
 
 CLASSIC_ROUTES_MODULES_USING = [
     ['okx_withdraw'],
-    ['bridge_layerswap', 'bridge_native'],
-    ['swap_mute', 'swap_izumi', 'mint_domain_ens', None],
+    ['bridge_relay'],
+    ['refuel_bungee', 'bridge_relay2', 'transfer_eth', 'transfer_eth_to_myself'],
 ]
