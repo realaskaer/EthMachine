@@ -313,6 +313,8 @@ class BingX(CEX, Logger):
         ccy, network_name = network_raw_name.split('-')
         ccy = f"{ccy}.e" if deposit_network in [29, 30] else ccy
 
+        await self.transfer_from_subaccounts(ccy=ccy, silent_mode=True)
+
         self.logger_msg(*self.client.acc_info, msg=f"Deposit {amount} {ccy} from {network_name} to BingX wallet: {info}")
 
         while True:
