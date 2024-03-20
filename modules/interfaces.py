@@ -1,7 +1,7 @@
 import asyncio
 
 from aiohttp import ClientSession, TCPConnector
-from aiohttp_proxy import ProxyConnector
+from aiohttp_socks import ProxyConnector
 from loguru import logger
 from sys import stderr
 from datetime import datetime
