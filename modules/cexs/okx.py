@@ -89,8 +89,8 @@ class OKX(CEX, Logger):
                 sub_balance = float(sub_balance[0]['availBal'])
 
             await asyncio.sleep(1)
-
-            if sub_balance != 0.0:
+            amount = amount if amount else sub_balance
+            if sub_balance == amount:
                 flag = False
                 amount = amount if amount else sub_balance
                 self.logger_msg(*self.client.acc_info, msg=f'{sub_name} | subAccount balance : {sub_balance} {ccy}')
@@ -206,11 +206,9 @@ class OKX(CEX, Logger):
             ccy = 'USDC'
 
         self.logger_msg(*self.client.acc_info, msg=f"Start checking CEX balances")
-        print(old_sub_balances)
         await asyncio.sleep(10)
         while True:
             new_sub_balances = await self.get_cex_balances(ccy=ccy)
-            print(new_sub_balances)
             for sub_name, sub_balance in new_sub_balances.items():
 
                 if sub_balance > old_sub_balances[sub_name]:
