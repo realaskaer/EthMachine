@@ -291,6 +291,7 @@ class Custom(Logger, RequestClient):
     @gas_checker
     async def smart_bridge(self, dapp_id:int = None):
         client = None
+        fee_client = None
         while True:
             try:
                 from functions import bridge_utils
@@ -382,3 +383,5 @@ class Custom(Logger, RequestClient):
             finally:
                 if client:
                     await client.session.close()
+                if fee_client:
+                    await fee_client.session.close()
