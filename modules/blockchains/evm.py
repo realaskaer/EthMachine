@@ -24,15 +24,8 @@ class SimpleEVM(Logger):
 
         self.network = self.client.network.name
         self.token_contract = self.client.get_contract(TOKENS_PER_CHAIN[self.network]['WETH'], WETH_ABI)
-        if self.network in ['zkSync', 'Base', 'Scroll', 'Linea']:
-            self.deposit_contract = self.client.get_contract(
-                NATIVE_CONTRACTS_PER_CHAIN[self.network]['deposit'],
-                NATIVE_ABI[self.network]['deposit'])
-            self.withdraw_contract = self.client.get_contract(
-                NATIVE_CONTRACTS_PER_CHAIN[self.network]['withdraw'],
-                NATIVE_ABI[self.network]['withdraw'])
-        else:
-            pass
+        self.deposit_contract = None
+        self.withdraw_contract = None
 
     @helper
     @gas_checker
@@ -169,6 +162,15 @@ class Scroll(Blockchain, SimpleEVM):
     def __init__(self, client):
         SimpleEVM.__init__(self, client)
         Blockchain.__init__(self, client)
+        self.deposit_contract = self.client.get_contract(
+            NATIVE_CONTRACTS_PER_CHAIN['Scroll']['deposit'],
+            NATIVE_ABI['Scroll']['deposit']
+        )
+        self.withdraw_contract = self.client.get_contract(
+            NATIVE_CONTRACTS_PER_CHAIN['Scroll']['withdraw'],
+            NATIVE_ABI['Scroll']['withdraw']
+        )
+
         self.oracle_contract = self.client.get_contract(
             NATIVE_CONTRACTS_PER_CHAIN['Scroll']["oracle"],
             NATIVE_ABI['Scroll']['oracle']
@@ -301,6 +303,15 @@ class Base(Blockchain, SimpleEVM):
         SimpleEVM.__init__(self, client)
         Blockchain.__init__(self, client)
 
+        self.deposit_contract = self.client.get_contract(
+            NATIVE_CONTRACTS_PER_CHAIN['Base']['deposit'],
+            NATIVE_ABI['Base']['deposit']
+        )
+        self.withdraw_contract = self.client.get_contract(
+            NATIVE_CONTRACTS_PER_CHAIN['Base']['withdraw'],
+            NATIVE_ABI['Base']['withdraw']
+        )
+
     @helper
     @gas_checker
     async def deposit(self):
@@ -356,6 +367,15 @@ class Linea(Blockchain, SimpleEVM):
     def __init__(self, client: Client):
         SimpleEVM.__init__(self, client)
         Blockchain.__init__(self, client)
+
+        self.deposit_contract = self.client.get_contract(
+            NATIVE_CONTRACTS_PER_CHAIN['Linea']['deposit'],
+            NATIVE_ABI['Linea']['deposit']
+        )
+        self.withdraw_contract = self.client.get_contract(
+            NATIVE_CONTRACTS_PER_CHAIN['Linea']['withdraw'],
+            NATIVE_ABI['Linea']['withdraw']
+        )
 
     async def get_bridge_fee(self, from_l1:bool = True):
         margin = 2
@@ -429,6 +449,7 @@ class Ethereum(Blockchain, SimpleEVM):
     def __init__(self, client):
         SimpleEVM.__init__(self, client)
         Blockchain.__init__(self, client)
+
 
 class Blast(Blockchain, SimpleEVM):
     def __init__(self, client):
