@@ -170,8 +170,9 @@ class Scroll(Blockchain, SimpleEVM):
         SimpleEVM.__init__(self, client)
         Blockchain.__init__(self, client)
         self.oracle_contract = self.client.get_contract(
-            NATIVE_CONTRACTS_PER_CHAIN[self.network]["oracle"],
-            NATIVE_ABI[self.network]['oracle'])
+            NATIVE_CONTRACTS_PER_CHAIN['Scroll']["oracle"],
+            NATIVE_ABI['Scroll']['oracle']
+        )
 
     @helper
     @gas_checker
