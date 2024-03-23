@@ -42,6 +42,7 @@ SHUFFLE_WALLETS = False         # Перемешивает кошельки пе
 SHUFFLE_ROUTE = False           # Перемешивает маршрут перед запуском
 BREAK_ROUTE = False             # Прекращает выполнение маршрута, если произойдет ошибка
 STOP_SOFTWARE = False           # Прекращает выполнение всего софта, если произойдет критическая ошибка
+VOLUME_MODE = False             # Приостанавливает выполнение маршрута, при возникновении ошибок с биржами или бриджами
 SAVE_PROGRESS = True            # Включает сохранение прогресса аккаунта для Classic-routes
 TELEGRAM_NOTIFICATIONS = False  # Включает уведомления в Telegram
 

@@ -4,6 +4,7 @@ import random
 import aiohttp.client_exceptions
 import python_socks
 
+from general_settings import VOLUME_MODE
 from modules import Logger, RequestClient, Client
 from modules.interfaces import SoftwareException, CriticalException
 from utils.tools import helper, gas_checker, sleep
@@ -279,10 +280,13 @@ class Custom(Logger, RequestClient):
                 except CriticalException as error:
                     raise error
                 except Exception as error:
-                    self.logger_msg(self.client.account_name, None, msg=f'{error}', type_msg='error')
-                    msg = f"Software cannot continue, awaiting operator's action. Will try again in 1 min..."
-                    self.logger_msg(self.client.account_name, None, msg=msg, type_msg='warning')
-                    await asyncio.sleep(60)
+                    if VOLUME_MODE:
+                        self.logger_msg(self.client.account_name, None, msg=f'{error}', type_msg='error')
+                        msg = f"Software cannot continue, awaiting operator's action. Will try again in 1 min..."
+                        self.logger_msg(self.client.account_name, None, msg=msg, type_msg='warning')
+                        await asyncio.sleep(60)
+                    else:
+                        raise error
                 finally:
                     if client:
                         await client.session.close()
@@ -378,10 +382,13 @@ class Custom(Logger, RequestClient):
             except CriticalException as error:
                 raise error
             except Exception as error:
-                self.logger_msg(self.client.account_name, None, msg=f'{error}', type_msg='error')
-                msg = f"Software cannot continue, awaiting operator's action. Will try again in 1 min..."
-                self.logger_msg(self.client.account_name, None, msg=msg, type_msg='warning')
-                await asyncio.sleep(60)
+                if VOLUME_MODE:
+                    self.logger_msg(self.client.account_name, None, msg=f'{error}', type_msg='error')
+                    msg = f"Software cannot continue, awaiting operator's action. Will try again in 1 min..."
+                    self.logger_msg(self.client.account_name, None, msg=msg, type_msg='warning')
+                    await asyncio.sleep(60)
+                else:
+                    raise error
             finally:
                 if client:
                     await client.session.close()
