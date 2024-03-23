@@ -136,7 +136,7 @@ class Bitget(CEX, Logger):
                     payload = {
                         "fromType": "spot",
                         "toType": "spot",
-                        "amount": f"{amount}",
+                        "amount": f"{amount:.10f}",
                         "coin": f"{ccy}",
                         "fromUserId": f"{sub_id}",
                         "toUserId": f"{main_id}",

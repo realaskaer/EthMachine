@@ -276,7 +276,7 @@ class Client(Logger):
 
         if sum(valid_wallet_balance.values()) > MIN_BALANCE * eth_price:
 
-            valid_wallet_balance = {k: round(v, 7) for k, v in valid_wallet_balance.items()}
+            valid_wallet_balance = {k: round(v, 6) for k, v in valid_wallet_balance.items()}
 
             biggest_token_balance_name = max(valid_wallet_balance, key=lambda x: valid_wallet_balance[x])
 
