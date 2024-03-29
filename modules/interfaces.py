@@ -78,7 +78,7 @@ class Logger(ABC):
             acc_index = f"{account_index}/{len(ACCOUNT_NAMES)}"
 
         if account_name is None and address is None:
-            info = f'[Attack machine] | {software_chain} | {class_name} |'
+            info = f'[EthMachine] | {software_chain} | {class_name} |'
         elif account_name is not None and address is None:
             info = f'[{acc_index}] | [{account_name}] | {software_chain} | {class_name} |'
         else:

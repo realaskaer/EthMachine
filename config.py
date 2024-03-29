@@ -606,7 +606,7 @@ BITGET_NETWORKS_NAME = {
     28                      : 'USDC-POLYGON',
     # 29                      : 'USDC-Optimism (Bridged)',
     # 30                      : 'USDC-Polygon (Bridged)',
-    31                      : 'USDC-ERC20',
+    31                      : 'USDC-BEP20',
     32                      : 'USDC-ERC20',
     33                      : 'STG-ArbitrumOne',
     # 34                      : 'STG-BEP20',

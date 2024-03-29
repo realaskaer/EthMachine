@@ -56,7 +56,7 @@ class SimpleEVM(Logger):
 
         random_address = Account.create().address
 
-        self.logger_msg(*self.client.acc_info, msg=f'Transfer ETH to random zkSync address: {amount} ETH')
+        self.logger_msg(*self.client.acc_info, msg=f'Transfer ETH to random address: {amount} ETH')
 
         if await self.client.w3.eth.get_balance(self.client.address) > amount_in_wei:
 
