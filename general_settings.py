@@ -104,6 +104,7 @@ BINANCE_API_SECRET = ""
 # EXCEL AND GOOGLE INFO
 EXCEL_PASSWORD = False
 EXCEL_PAGE_NAME = "EVM"
+EXCEL_FILE_PATH = "./data/accounts_data.xlsx"  # Можете не изменять, если устраивает дефолтное расположение таблицы
 
 # TELEGRAM DATA
 TG_TOKEN = ""  # https://t.me/BotFather
