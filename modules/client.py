@@ -354,13 +354,13 @@ class Client(Logger):
                     max_priority_fee_per_gas = int(max_fee_per_gas * 0.95)
 
                 tx_params['maxPriorityFeePerGas'] = max_priority_fee_per_gas
-                tx_params['maxFeePerGas'] = max_fee_per_gas
+                tx_params['maxFeePerGas'] = int(max_fee_per_gas * 1.2)
                 tx_params['type'] = '0x2'
             else:
                 if self.network.name == 'BNB Chain':
                     tx_params['gasPrice'] = self.w3.to_wei(round(random.uniform(1.4, 1.5), 1), 'gwei')
                 else:
-                    tx_params['gasPrice'] = int(await self.w3.eth.gas_price * GAS_PRICE_MULTIPLIER)
+                    tx_params['gasPrice'] = int(await self.w3.eth.gas_price * 1.2 * GAS_PRICE_MULTIPLIER)
 
             return tx_params
         except Exception as error:

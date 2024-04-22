@@ -190,8 +190,8 @@ class Scroll(Blockchain, SimpleEVM):
             gas_limit = 168000
             gas_price = await self.client.w3.eth.gas_price
 
-            bridge_fee = int(gas_limit * gas_price)
-            
+            bridge_fee = int(gas_limit * gas_price / 5.2)
+
             tx_params = await self.client.prepare_transaction(value=amount_in_wei + bridge_fee)
 
             transaction = await self.deposit_contract.functions.sendMessage(
