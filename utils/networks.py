@@ -46,7 +46,8 @@ ScrollRPC = Network(
 ArbitrumRPC = Network(
     name='Arbitrum',
     rpc=[
-        'https://rpc.ankr.com/arbitrum/',
+        'https://arbitrum.drpc.org',
+        'https://arb1.arbitrum.io/rpc',
     ],
     chain_id=42161,
     eip1559_support=True,
@@ -58,7 +59,6 @@ ArbitrumRPC = Network(
 OptimismRPC = Network(
     name='Optimism',
     rpc=[
-        'https://rpc.ankr.com/optimism/',
         'https://optimism.drpc.org',
         'https://1rpc.io/op'
     ],
@@ -96,7 +96,6 @@ AvalancheRPC = Network(
 EthereumRPC = Network(
     name='Ethereum',
     rpc=[
-        'https://rpc.ankr.com/eth',
         'https://ethereum.publicnode.com',
         'https://rpc.flashbots.net',
         'https://1rpc.io/eth',
@@ -162,7 +161,6 @@ Polygon_ZKEVM_RPC = Network(
     rpc=[
         'https://1rpc.io/polygon/zkevm',
         'https://zkevm-rpc.com',
-        'https://rpc.ankr.com/polygon_zkevm'
     ],
     chain_id=1101,
     eip1559_support=False,
@@ -199,7 +197,6 @@ MantleRPC = Network(
         'https://mantle.publicnode.com',
         'https://mantle-mainnet.public.blastapi.io',
         'https://mantle.drpc.org',
-        'https://rpc.ankr.com/mantle',
         'https://1rpc.io/mantle'
     ],
     chain_id=5000,
