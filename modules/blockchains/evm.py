@@ -116,12 +116,11 @@ class SimpleEVM(Logger):
     @gas_checker
     async def random_approve(self):
         from config import (
-            IZUMI_CONTRACTS, ODOS_CONTRACTS, ONEINCH_CONTRACTS, OPENOCEAN_CONTRACTS, RANGO_CONTRACTS,
+            ODOS_CONTRACTS, ONEINCH_CONTRACTS, OPENOCEAN_CONTRACTS, RANGO_CONTRACTS,
             UNISWAP_CONTRACTS, XYFINANCE_CONTRACTS, TOKENS_PER_CHAIN
         )
 
         all_contracts = {
-            "iZumi":IZUMI_CONTRACTS,
             "ODOS":ODOS_CONTRACTS,
             "1inch":ONEINCH_CONTRACTS,
             "OpenOcean":OPENOCEAN_CONTRACTS,
