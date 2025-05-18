@@ -110,7 +110,6 @@ EthereumRPC = Network(
 Arbitrum_novaRPC = Network(
     name='Arbitrum Nova',
     rpc=[
-        'https://rpc.ankr.com/arbitrumnova',
         'https://arbitrum-nova.publicnode.com',
         'https://arbitrum-nova.drpc.org',
         'https://nova.arbitrum.io/rpc'
@@ -171,7 +170,7 @@ Polygon_ZKEVM_RPC = Network(
 BSC_RPC = Network(
     name='BNB Chain',
     rpc=[
-        'https://rpc.ankr.com/bsc',
+        'https://binance.llamarpc.com',
     ],
     chain_id=56,
     eip1559_support=False,
@@ -222,7 +221,6 @@ OpBNB_RPC = Network(
 MoonbeamRPC = Network(
     name='Moonbeam',
     rpc=[
-        'https://rpc.ankr.com/moonbeam',
         'https://1rpc.io/glmr',
         'https://rpc.api.moonbeam.network',
     ],
@@ -277,7 +275,6 @@ CeloRPC = Network(
     name='Celo',
     rpc=[
         'https://forno.celo.org',
-        'https://rpc.ankr.com/celo',
         'https://1rpc.io/celo',
     ],
     chain_id=42220,
@@ -301,7 +298,6 @@ GnosisRPC = Network(
 CoreRPC = Network(
     name='CoreDAO',
     rpc=[
-        'https://rpc.ankr.com/core',
         'https://1rpc.io/core',
         'https://rpc.coredao.org',
     ],
@@ -350,7 +346,6 @@ OrderlyRPC = Network(
 HorizenRPC = Network(
     name='Horizen EON',
     rpc=[
-        'https://rpc.ankr.com/horizen_eon',
         'https://eon-rpc.horizenlabs.io/ethv1',
     ],
     chain_id=7332,
@@ -401,7 +396,6 @@ KavaRPC = Network(
 KlaytnRPC = Network(
     name='Klaytn',
     rpc=[
-        'https://rpc.ankr.com/klaytn',
         'https://klaytn.drpc.org',
     ],
     chain_id=8217,
@@ -413,7 +407,7 @@ KlaytnRPC = Network(
 FantomRPC = Network(
     name='Fantom',
     rpc=[
-        'https://rpc.ankr.com/fantom',
+        'https://rpcapi.fantom.network',
     ],
     chain_id=250,
     eip1559_support=False,
@@ -481,7 +475,6 @@ GoerliRPC = Network(
     name='Goerli',
     rpc=[
         'https://endpoints.omniatech.io/v1/eth/goerli/public',
-        'https://rpc.ankr.com/eth_goerli',
         'https://eth-goerli.public.blastapi.io',
         'https://goerli.blockpi.network/v1/rpc/public'
     ],
@@ -601,7 +594,6 @@ BlastRPC = Network(
     name='Blast',
     rpc=[
         'https://rpc.blast.io',
-        'https://rpc.ankr.com/blast'
     ],
     chain_id=81457,
     eip1559_support=False,
